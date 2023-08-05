@@ -2,7 +2,7 @@
 
 ## Autores
 - Luis Pedro González Aldana
-- Axel López
+- Axel Leonardo López
 
 ## Uso 
 
@@ -89,8 +89,8 @@ casos solicitados
 ## Implementación
 
 ### Lenguajes seleccionados
-- JavaScript
-- Python
+- JavaScript (colocar el archivo javascript_version/index.html en el navegador)
+- Python (Correr el archivo python_version/main.py con el comando python main.py)
 
 ### Algoritmos 
 - Hamming (Correción)
