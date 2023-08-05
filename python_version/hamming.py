@@ -1,4 +1,3 @@
-from simulation_trama_actions import interfer_and_modify_trama
 def calculate_p(i):
     p = 0
     while (2 ** p) < (p + i + 1):
@@ -17,7 +16,15 @@ def hamn_receptor(msg_concat):
             if j & (2**i) != 0:
                 parity_bit ^= int(msg_concat[j - 1])
         error_pos += (2**i) * parity_bit
-    return error_pos
+
+    if error_pos > 0 and error_pos <= len(msg_concat):
+        # Hay un error, invertir el bit en la posición del error
+        msg_concat = list(msg_concat)
+        msg_concat[error_pos - 1] = revert_bit(msg_concat[error_pos - 1])
+        msg_concat = "".join(msg_concat)
+    elif error_pos > len(msg_concat):
+        return error_pos, "Error detectado pero no se puede corregir"
+    return error_pos, msg_concat
 
 def hamm_transmitter(msg):
     p = calculate_p(len(msg))
@@ -41,11 +48,11 @@ def hamm_transmitter(msg):
     return msg_concat
 
 if __name__ == "__main__":
-    transmitted_message = hamm_transmitter("0101001")
 
-
-    error_position = hamn_receptor((transmitted_message))
+    error_position, received_message = hamn_receptor("111111111111111")
     if error_position == 0:
-        print("No se encontraron errores. Trama recibida:", transmitted_message)
+        print("No se encontraron errores. Trama recibida:", received_message)
+    elif received_message == "Error detectado pero no se puede corregir":
+        print(f"Se encontró un error, pero no se pudo corregir. Trama recibida: {received_message}")
     else:
-        print(f"Se encontraron errores, la trama se descarta. Posición del error: {error_position}")
+        print(f"Se encontró un error y se corrigió. Trama recibida:", received_message)
