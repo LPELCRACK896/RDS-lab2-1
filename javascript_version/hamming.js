@@ -43,7 +43,8 @@ function countOnes(array) {
     }
     return count;
 }
-function submit() {
+
+function submitHamming() {
     const trama = document.getElementById('code').value;
     const paridad = parity(trama.length);
     const longitudMensaje = paridad + trama.length;

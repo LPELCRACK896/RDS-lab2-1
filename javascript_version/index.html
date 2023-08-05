@@ -7,15 +7,33 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div>
+    <div class="container">
         <div>
-            <label for="code">Ingrese la trama: </label>
-            <input type="text" name="code" id="code">
+            <div>
+                <h3>Hamming</h3>
+                <div>
+                    <label for="code">Ingrese la trama: </label>
+                    <input type="text" name="code" id="code">
+                </div>
+                <button type="button" onclick="submitHamming()">Submit</button>
+            </div>
+            <div id="response">
+            </div>
         </div>
-        <button type="button" onclick="submit()">Submit</button>
+        <div>
+            <div>
+                <h3>CRC-1</h3>
+                <div>
+                    <label for="code">Ingrese la trama: </label>
+                    <input type="text" name="code1" id="code1">
+                </div>
+                <button type="button" onclick="submitCRC()">Submit</button>
+            </div>
+            <div id="response1">
+            </div>
+        </div>
     </div>
-    <div id="response">
-    </div>
-    <script src="index.js"></script>
+    <script src="hamming.js"></script>
+    <script src="crc-1.js"></script>
 </body>
 </html>
