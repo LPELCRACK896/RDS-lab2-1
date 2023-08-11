@@ -26,4 +26,4 @@ print("Verificación de paridad: " + str(check_parity_bit(data_with_parity)))
  """
 
 if __name__ == "__main__":
-    print("Verificación de paridad: " + str(check_parity_bit("01011101")))
+    print("Verificación de paridad: " + str(check_parity_bit("1100001001")))
