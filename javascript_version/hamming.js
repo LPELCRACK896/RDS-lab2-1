@@ -1,3 +1,5 @@
+const  { countOnes, isValidTrama } = require("./utils.js")
+
 function parity(m) {
     let r = 1;
     while (m + r + 1 > Math.pow(2, r)) {
@@ -34,18 +36,7 @@ function dOrP(length, trama) {
     return helper;
 }
 
-function countOnes(array) {
-    let count = 0;
-    for (let i = 0; i < array.length; i++) {
-        if (array[i] == 1) {
-            count++;
-        }
-    }
-    return count;
-}
-
-function submitHamming() {
-    const trama = document.getElementById('code').value;
+function submitHamming(trama) {
     const paridad = parity(trama.length);
     const longitudMensaje = paridad + trama.length;
     const posicionesBinarias = positionsBinary(longitudMensaje, paridad);
@@ -66,6 +57,7 @@ function submitHamming() {
             tramaFinal[index] = operacion[index];
         }
     });
-    document.getElementById('response').innerHTML = `<p>Respuesta: ${tramaFinal.join('')}</p>`;
-
+    return tramaFinal.join('');
 }
+
+module.exports = { submitHamming };
